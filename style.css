@@ -104,7 +104,8 @@ section {
     content: '';
     position: absolute;
     top: -10px;
-    width: 100%;
+    width: 104%; /* <-- TRUCCO: Sborda del 4% fuori dal liquido! */ /*width: 100%*/
+    left: -2%;   /* <-- TRUCCO: Lo ricentra perfettamente */ /*no left*/
     height: 20px;
     background: #41c1fb;
     border-radius: 50%;
@@ -116,24 +117,20 @@ section {
     0%, 100% {
         height: 20px;
         top: -10px;
-        border-radius: 50%; /* Piatto e calmo */
+        transform: rotate(0deg);
     }
-    30% {
-        height: 34px;
-        top: -17px; /* Esattamente la metà di 34! Nessun buco nero. */
-        border-radius: 45% 55% 48% 52%; /* Si deforma un po' a destra */
+    33% {
+        height: 24px;
+        top: -11px; /* Lo teniamo un po' più basso apposta per coprire gli angoli */
+        transform: rotate(2deg); /* Inclinazione molto leggera */
     }
-    60% {
-        height: 16px;
-        top: -8px; /* Esattamente la metà di 16! */
-        border-radius: 55% 45% 52% 48%; /* Si schiaccia e si deforma a sinistra */
-    }
-    80% {
-        height: 28px;
-        top: -14px; /* Esattamente la metà di 28! */
-        border-radius: 48% 52% 55% 45%; 
+    66% {
+        height: 18px;
+        top: -8px;
+        transform: rotate(-2deg); /* Inclinazione opposta */
     }
 }
+
 .shadow {
     position: absolute;
     top: calc(-50% + 150px);
@@ -144,6 +141,7 @@ section {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
 }
+
 
 
 
