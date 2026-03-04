@@ -148,9 +148,10 @@ section {
         opacity: 1;
     }
     100% {
-        transform: translateY(-120px) scale(0); /* Salgono di 120px, si rimpiccioliscono e svaniscono */
+        transform: translateY(-300px) scale(0); /* Salgono di 120px, si rimpiccioliscono e svaniscono */
         opacity: 0;
     }
 }
+
 
 
