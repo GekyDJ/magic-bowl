@@ -145,14 +145,10 @@ section {
 @keyframes rise {
     0% {
         transform: translateY(0) scale(1);
-        opacity: 1;
+        opacity: 0.8; /* Partono già leggermente trasparenti */
     }
     100% {
-        transform: translateY(-100px) scale(0); /* Salgono di 120px, si rimpiccioliscono e svaniscono */
+        transform: translateY(-60px) scale(0); /* Salgono di poco e si vaporizzano (diventano 0) */
         opacity: 0;
     }
 }
-
-
-
-
