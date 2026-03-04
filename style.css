@@ -20,27 +20,14 @@ section {
     border-radius: 50%;
     border: 8px solid transparent;
     transform-origin: bottom center;
-    animation: animate 5s linear infinite;
+    animation: animate 4s ease-in-out infinite;
 }
 
 @keyframes animate {
-    0% {
-        filter: hue-rotate(0deg);
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(15deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(-15deg);
-    }
-    100% {
-        filter: hue-rotate(360deg);
-        transform: rotate(0deg);
-    }
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(8deg); } /* Inclinazione ridotta per realismo */
+    75% { transform: rotate(-8deg); }
+    50% { transform: rotate(0deg); }
 }
 
 .bowl::before {
@@ -79,25 +66,14 @@ section {
     border-bottom-right-radius: 150px;
     filter: drop-shadow(0 0 80px #41c1fb);
     transform-origin: top center;
-    animation: animateLiquid 5s linear infinite;
+    animation: animateLiquid 4s ease-in-out infinite;
 }
 
 @keyframes animateLiquid {
-    0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-20deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(20deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-12deg); } /* Il liquido si oppone al movimento */
+    75% { transform: rotate(12deg); }
+    50% { transform: rotate(0deg); }
 }
 
 .liquid::before {
@@ -121,3 +97,4 @@ section {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
 }
+
