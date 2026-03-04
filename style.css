@@ -93,7 +93,7 @@ section {
     background: #41c1fb;
     border-radius: 50%;
     filter: drop-shadow(0 0 80px #41c1fb);
-    animation: animateWaves 10s linear infinite; 
+    animation: animateWaves 4s linear infinite; 
 }
 
 @keyframes animateWaves {
@@ -141,6 +141,7 @@ section {
     0% { transform: translateY(0) scale(1); opacity: 0.8; }
     100% { transform: translateY(-60px) scale(0); opacity: 0; }
 }
+
 
 
 
