@@ -1,71 +1,51 @@
 <!DOCTYPE html>
-</html>
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colorful Glowing Liquid Bowl</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Bowl</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <section>
-    <div class="bowl" id="bowl-container"></div>
-    <div class="liquid"></div>
-    <div class="shadow"></div>
-  </section>
+    <section>
+        <div class="shadow"></div>
+        
+        <div class="bowl" id="bowl-container">
+            <div class="liquid"></div>
+        </div>
+    </section>
 
-  <script>
+    <script>
         function createBubble() {
-            // 1. Trova la ciotola
             const container = document.getElementById('bowl-container');
-            
-            // 2. Crea una nuova bollicina dal nulla
             const bubble = document.createElement('span');
             bubble.classList.add('bubble');
             
-            // 3. DIMENSIONE CASUALE ADATTIVA (PC vs Mobile)
             let minSize = 4;
             let maxSize = 15;
 
-            // Se lo schermo è piccolo (meno di 768 pixel, tipico degli smartphone)
-            // raddoppiamo quasi le dimensioni base!
+            // Adattamento per i cellulari
             if (window.innerWidth < 768) {
                 minSize = 8;
                 maxSize = 24;
             }
 
-            // Calcola la grandezza finale in base ai limiti scelti sopra
             let size = Math.random() * (maxSize - minSize) + minSize; 
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
             
-            // 4. POSIZIONE CASUALE (spostata a destra o a sinistra)
             bubble.style.left = (Math.random() * 80 + 10) + '%';
-            
-            // 5. VELOCITÀ CASUALE (Movimento lento e denso: ci mettono dai 2 ai 4 secondi)
             let duration = Math.random() * 2 + 2;
             bubble.style.animationDuration = duration + 's';
             
-            // 6. Metti la bolla nella ciotola!
             container.appendChild(bubble);
             
-            // 7. FONDAMENTALE: Elimina la bolla quando scompare, altrimenti il PC si blocca!
             setTimeout(() => {
                 bubble.remove();
             }, duration * 1000);
         }
 
-        // Fai partire una bollicina ogni 180 millisecondi (frequenza media perfetta)
-        setInterval(createBubble, 200);
+        setInterval(createBubble, 180);
     </script>
-  
 </body>
-
-
-
-
-
-
-
-
-
+</html>
