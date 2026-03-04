@@ -95,31 +95,34 @@ section {
     animation: animateWaves 5s ease-in-out infinite;
 }
 
-@keyframes miniWaves {
+@keyframes animateWaves {
     0%, 100% {
         height: 20px;
         top: -10px;
         border-radius: 50%;
+        transform: rotate(0deg);
     }
     25% {
-        /* L'acqua si increspa verso l'alto a sinistra */
-        height: 22px;      
+        /* L'onda si alza a sinistra: aumentiamo l'altezza e incliniamo l'ovale! */
+        height: 24px;      
         top: -12px;        
-        border-radius: 52% 48% 50% 50%; 
+        border-radius: 40% 60% 50% 50%; /* Deformazione marcata (tutto pari) */
+        transform: rotate(-4deg); /* Inclina la superficie */
     }
     50% {
         height: 20px;
         top: -10px;
         border-radius: 50%;
+        transform: rotate(0deg);
     }
     75% {
-        /* L'acqua si increspa verso il basso a destra */
-        height: 18px;      
-        top: -8px;
-        border-radius: 48% 52% 50% 50%;
+        /* L'onda si sposta a destra */
+        height: 24px;      
+        top: -12px;
+        border-radius: 60% 40% 50% 50%; 
+        transform: rotate(4deg); /* Inclina dall'altra parte */
     }
 }
-
 /* --- LE BOLLICINE --- */
 .bubble {
     position: absolute;
@@ -135,6 +138,7 @@ section {
     0% { transform: translateY(0) scale(1); opacity: 0.8; }
     100% { transform: translateY(-60px) scale(0); opacity: 0; }
 }
+
 
 
 
