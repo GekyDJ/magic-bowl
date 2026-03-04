@@ -121,24 +121,26 @@ section {
 
 .shadow {
     position: absolute;
-    top: calc(-50% + 150px);
+    top: calc(-50% + 150px); /* La tiene sotto la ciotola */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
     height: 30px;
-    background: rgba(0, 0, 0, 0.5);
+    /* TRUCCO: Usiamo il colore azzurro del liquido, ma semi-trasparente (0.4) */
+    background: rgba(65, 193, 251, 0.4); 
     border-radius: 50%;
+    filter: blur(15px); /* Sfoca i bordi per farlo sembrare un vero riflesso sul pavimento */
     animation: shadowPulse 5s ease-in-out infinite;
 }
 
 @keyframes shadowPulse {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
+        opacity: 0.8; /* Più visibile */
     }
     50% {
-        transform: translate(-50%, -50%) scale(0.9); /* Si rimpicciolisce un po' */
-        opacity: 0.3; /* Diventa più chiara */
+        transform: translate(-50%, -50%) scale(0.8); /* Si restringe un bel po' */
+        opacity: 0.3; /* Si attenua molto, creando un forte stacco visivo */
     }
 }
 
@@ -164,3 +166,4 @@ section {
         opacity: 0;
     }
 }
+
