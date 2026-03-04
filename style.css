@@ -28,9 +28,15 @@ section {
 
 @keyframes animateBowl {
     0% { filter: hue-rotate(0deg); transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
+    
+    /* La ciotola va a DESTRA (+15 gradi) */
+    25% { transform: rotate(15deg); } 
+    
     50% { transform: rotate(0deg); }
-    75% { transform: rotate(-15deg); }
+    
+    /* La ciotola va a SINISTRA (-15 gradi) */
+    75% { transform: rotate(-15deg); } 
+    
     100% { filter: hue-rotate(360deg); transform: rotate(0deg); }
 }
 
@@ -76,9 +82,15 @@ section {
 
 @keyframes animateLiquid {
     0% { transform: rotate(0deg); }
-    25% { transform: rotate(20deg); }
+    
+    /* La ciotola è andata a destra? Noi andiamo a SINISTRA (-15 gradi) per restare dritti */
+    25% { transform: rotate(-15deg); } 
+    
     50% { transform: rotate(0deg); }
-    75% { transform: rotate(-20deg); }
+    
+    /* La ciotola è andata a sinistra? Noi andiamo a DESTRA (+15 gradi) */
+    75% { transform: rotate(15deg); } 
+    
     100% { transform: rotate(0deg); }
 }
 
@@ -108,5 +120,6 @@ section {
     0% { transform: translateY(0) scale(1); opacity: 0.8; }
     100% { transform: translateY(-60px) scale(0); opacity: 0; }
 }
+
 
 
