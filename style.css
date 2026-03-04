@@ -10,9 +10,10 @@ section {
     align-items: center;
     min-height: 100vh;
     background-color: black;
-    position: relative;
+    position: relative; /* Fondamentale per tenere ferma l'ombra */
 }
 
+/* --- LA CIOTOLA --- */
 .bowl {
     position: relative;
     width: 300px;
@@ -21,31 +22,16 @@ section {
     border-radius: 50%;
     border: 8px solid transparent;
     transform-origin: bottom center;
-    animation: animate 10s linear infinite;
+    animation: animate 5s linear infinite;
+    z-index: 2; /* Tiene la ciotola in primo piano */
 }
 
 @keyframes animate {
-    0% {
-        filter: hue-rotate(0deg);
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(15deg);
-    }
-
-    50% {
-        transform: rotate(0deg);
-    }
-
-    75% {
-        transform: rotate(-15deg);
-    }
-
-    100% {
-        filter: hue-rotate(360deg);
-        transform: rotate(0deg);
-    }
+    0% { filter: hue-rotate(0deg); transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-15deg); }
+    100% { filter: hue-rotate(360deg); transform: rotate(0deg); }
 }
 
 .bowl::before {
@@ -73,6 +59,7 @@ section {
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* --- IL LIQUIDO --- */
 .liquid {
     position: absolute;
     top: 50%;
@@ -84,29 +71,15 @@ section {
     border-bottom-right-radius: 150px;
     filter: drop-shadow(0 0 80px #41c1fb);
     transform-origin: top center;
-    animation: animateLiquid 10s linear infinite;
+    animation: animateLiquid 5s linear infinite;
 }
 
 @keyframes animateLiquid {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(-20deg);
-    }
-
-    50% {
-        transform: rotate(0deg);
-    }
-
-    75% {
-        transform: rotate(20deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-20deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .liquid::before {
@@ -120,66 +93,43 @@ section {
     filter: drop-shadow(0 0 80px #41c1fb);
 }
 
+/* --- L'OMBRA (Riflesso luminoso sul pavimento) --- */
 .shadow {
     position: absolute;
-    top: 50%;  /* La mettiamo al centro della pagina... */
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 170px); /* ...e la spingiamo 150px in basso, sotto la ciotola! */
-    width: 300px;
-    height: 30px;
+    transform: translate(-50%, 150px); /* 150px la spinge esattamente sotto la ciotola */
+    width: 260px;
+    height: 40px;
     background: rgba(65, 193, 251, 0.4); 
     border-radius: 50%;
-    filter: blur(15px);
-    z-index: -1; /* La tiene dietro la ciotola */
+    filter: blur(20px);
+    z-index: 1; /* Sta sotto la ciotola (che è z-index: 2) ma sopra lo sfondo */
     animation: shadowPulse 2.5s ease-in-out infinite, shadowColor 5s linear infinite;
 }
 
-/* Animazione 1: Il Respiro (Grandezza e Opacità) */
 @keyframes shadowPulse {
-    0%, 100% {
-        transform: translate(-50%, 170px) scale(1);
-        opacity: 0.8; 
-    }
-    50% {
-        transform: translate(-50%, 170px) scale(0.8); 
-        opacity: 0.3; 
-    }
+    0%, 100% { transform: translate(-50%, 150px) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, 150px) scale(0.8); opacity: 0.3; }
 }
 
-/* Animazione 2: La Ruota dei Colori (Sincronizzata con la ciotola) */
 @keyframes shadowColor {
-    0% {
-        filter: blur(15px) hue-rotate(0deg);
-    }
-    100% {
-        filter: blur(15px) hue-rotate(360deg);
-    }
+    0% { filter: blur(20px) hue-rotate(0deg); }
+    100% { filter: blur(20px) hue-rotate(360deg); }
 }
 
-/* --- EFFETTO BOLLICINE / SCHIZZI --- */
+/* --- LE BOLLICINE --- */
 .bubble {
     position: absolute;
-    background: #41c1fb; /* Stesso colore del liquido */
+    background: #41c1fb;
     border-radius: 50%;
     filter: drop-shadow(0 0 10px #41c1fb);
-    bottom: 50%; /* Le facciamo partire dalla superficie del liquido */
+    bottom: 50%;
     z-index: 10;
-    /* L'animazione per farle salire */
     animation: rise linear forwards; 
 }
 
 @keyframes rise {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.8; /* Partono già leggermente trasparenti */
-    }
-    100% {
-        transform: translateY(-60px) scale(0); /* Salgono di poco e si vaporizzano (diventano 0) */
-        opacity: 0;
-    }
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-60px) scale(0); opacity: 0; }
 }
-
-
-
-
-
