@@ -1,2 +1,2 @@
 # gekydj.github.io
-Colorful GLowing Liquid Bowl
+Colorful Glowing Liquid Bowl
