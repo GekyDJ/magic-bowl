@@ -20,14 +20,15 @@ section {
     border-radius: 50%;
     border: 8px solid transparent;
     transform-origin: bottom center; /* CAMBIO: Da 'linear' a 'ease-in-out' e 4 secondi */
-    animation: animate 4s ease-in-out infinite; 
+    animation: animate 5s linear infinite;
 }
 
 @keyframes animate {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); } /* Movimento più contenuto */
-    75% { transform: rotate(-10deg); }
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
     50% { transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .bowl::before {
@@ -66,14 +67,27 @@ section {
     border-bottom-right-radius: 150px;
     filter: drop-shadow(0 0 80px #41c1fb);
     transform-origin: top center; /* CAMBIO: 'ease-in-out' rende il liquido fluido, non meccanico */
-    animation: animateLiquid 4s ease-in-out infinite;
+    animation: animateLiquid 5s linear infinite;
 }
 
 @keyframes animateLiquid {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-15deg); } /* Il liquido si sposta verso l'alto */
-    75% { transform: rotate(15deg); }
-    50% { transform: rotate(0deg); }
+    0%, 100% { 
+        transform: rotate(0deg); 
+        /* Aggiungiamo un leggero spostamento laterale per la fluidità */
+        left: 5px; 
+    }
+    25% { 
+        transform: rotate(-15deg); 
+        left: 15px; 
+    }
+    50% { 
+        transform: rotate(0deg); 
+        left: 5px; 
+    }
+    75% { 
+        transform: rotate(15deg); 
+        left: -5px; 
+    }
 }
 
 .liquid::before {
@@ -97,5 +111,6 @@ section {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
 }
+
 
 
