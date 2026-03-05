@@ -2,7 +2,7 @@
 
 An interactive and responsive simulation of a glowing liquid, built with pure CSS and Vanilla JavaScript. It features smooth gravity animations, realistic inertia (sloshing) effects, and a dynamic particle generator adapted for mobile devices.
 
-**Live Demo:** [Watch the live animation here](https://gekydj.github.io)
+**Live Demo:** [watch the live animation here](https://gekydj.github.io)
 
 ## Features
 
@@ -13,7 +13,7 @@ An interactive and responsive simulation of a glowing liquid, built with pure CS
 * **Glow & Glassmorphism:** High-fidelity visual style using CSS filters, `drop-shadow`, and transparency for a modern neon look.
 
 ## Credits
-Original concept and tutorial by [Online Tutorials] - [https://www.youtube.com/watch?v=HCO0-lDCdDM]. All rights to the original video content and design belong to the respective creator.
+Original concept and tutorial by [Online Tutorials]() - [https://www.youtube.com/watch?v=HCO0-lDCdDM]. All rights to the original video content and design belong to the respective creator.
 
 **Rearranged and enhanced by me:**
 * Implemented realistic sloshing physics.
