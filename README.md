@@ -13,7 +13,7 @@ An interactive and responsive simulation of a glowing liquid, built with pure CS
 * **Glow & Glassmorphism:** High-fidelity visual style using CSS filters, `drop-shadow`, and transparency for a modern neon look.
 
 ## Credits
-Original concept and tutorial by [Online Tutorials]() - [https://www.youtube.com/watch?v=HCO0-lDCdDM]. All rights to the original video content and design belong to the respective creator.
+Original concept and tutorial by [Online Tutorials]() - [video link](https://www.youtube.com/watch?v=HCO0-lDCdDM). All rights to the original video content and design belong to the respective creator.
 
 **Rearranged and enhanced by me:**
 * Implemented realistic sloshing physics.
@@ -26,5 +26,5 @@ This repository is open source: feel free to use, modify, and share this code!
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/gekydj/magic-bowl.git](https://github.com/gekydj/magic-bowl.git)
+   git clone [https://github.com/gekydj/magic-bowl.git(https://github.com/gekydj/magic-bowl.git)
 2. Open index.html in your browser.
