@@ -1,4 +1,4 @@
-# Colorful Glowing Liquid Bowl
+# Colorful Glowing Liquid Magic Bowl
 
 An interactive and responsive simulation of a glowing liquid, built with pure CSS and Vanilla JavaScript. It features smooth gravity animations, realistic inertia (sloshing) effects, and a dynamic particle generator adapted for mobile devices.
 
