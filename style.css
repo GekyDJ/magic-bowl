@@ -118,19 +118,35 @@ section {
     border-radius: 50%;
     filter: drop-shadow(0 0 80px #41c1fb);
     z-index: 5;
-}
-
 .shadow {
     position: absolute;
-    top: calc(50% + 38vw);
+    /* La posizioniamo esattamente al centro della sezione */
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 4vh;
-    background: rgba(0, 0, 0, 0.6);
+    
+    /* Creiamo un'area grande quanto la ciotola */
+    width: 80vw; 
+    height: 80vw;
+    max-width: 300px;
+    max-height: 300px;
+    
+    /* Non le diamo un colore, ma usiamo un elemento interno (::after) 
+       per disegnare l'ombra proprio sul bordo inferiore */
+    pointer-events: none; /* Così non interferisce con i tocchi */
+}
+
+.shadow::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Questo la tiene SEMPRE "attaccata" al fondo del cerchio */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Larghezza dell'ombra rispetto alla ciotola */
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    filter: blur(5px);
-    z-index: 2;
+    filter: blur(10px);
 }
 
 /*BOLLE*/
@@ -149,6 +165,7 @@ section {
     0% { transform: translateY(0) scale(1); opacity: 0.8; }
     100% { transform: translateY(-60px) scale(0); opacity: 0; }
 }
+
 
 
 
