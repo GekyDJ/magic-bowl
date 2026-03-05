@@ -22,7 +22,8 @@ git clone https://github.com/gekydj/magic-bowl.git
 2. Open index.html in your browser
 
 ## Credits
-Original concept and tutorial by [Online Tutorials](https://www.youtube.com/@OnlineTutorialsYT) - [[video link](https://www.youtube.com/watch?v=HCO0-lDCdDM)]. All rights to the original video content and design belong to the respective creator.
+Original concept and tutorial by [Online Tutorials](https://www.youtube.com/@OnlineTutorialsYT) - [[video link](https://www.youtube.com/watch?v=HCO0-lDCdDM)].
+All rights to the original video content and design belong to the respective creator.
 
 **Rearranged and enhanced by me:**
 * Implemented realistic sloshing physics.
