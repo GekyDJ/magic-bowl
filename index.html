@@ -2,58 +2,50 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <!-- Blocco totale di zoom, pinch e spostamento su schermi touch -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <meta name="theme-color" content="#121212">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Glowing Liquid Bowl</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Bowl</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- La Section applica il cambio di colore (Hue Rotate) a TUTTO ciò che contiene -->
     <section>
-        <div class="bowl-wrapper">
-            <!-- L'ombra sul pavimento -->
-            <div class="shadow"></div>
-            
-            <div class="bowl">
-                <!-- Il liquido che riempie la metà inferiore -->
-                <div class="liquid"></div>
-                <!-- Le bolle che partono dalla superficie -->
-                <div class="bubbles-container"></div>
-            </div>
+        <div class="shadow"></div>
+        
+        <div class="bowl" id="bowl-container">
+            <div class="liquid"></div>
         </div>
     </section>
 
     <script>
-        const bubblesContainer = document.querySelector('.bubbles-container');
-
         function createBubble() {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble'); 
+            const container = document.getElementById('bowl-container');
+            const bubble = document.createElement('span');
+            bubble.classList.add('bubble');
+            
+            let minSize = 4;
+            let maxSize = 15;
 
-            // Dimensioni casuali
-            const size = Math.random() * 6 + 4;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
+            // Adattamento per i cellulari
+            if (window.innerWidth < 768) {
+                minSize = 8;
+                maxSize = 24;
+            }
 
-            // Posizione orizzontale casuale (lontano dai bordi estremi)
-            bubble.style.left = `${Math.random() * 80 + 10}%`; 
-
-            // Velocità di salita
-            bubble.style.animationDuration = `${Math.random() * 2 + 2}s`;
-
-            bubblesContainer.appendChild(bubble);
-
-            // Elimina la bolla dopo 4 secondi
+            let size = Math.random() * (maxSize - minSize) + minSize; 
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            
+            bubble.style.left = (Math.random() * 80 + 10) + '%';
+            let duration = Math.random() * 2 + 2;
+            bubble.style.animationDuration = duration + 's';
+            
+            container.appendChild(bubble);
+            
             setTimeout(() => {
                 bubble.remove();
-            }, 4000);
+            }, duration * 1000);
         }
 
-        setInterval(createBubble, 300);
+        setInterval(createBubble, 180);
     </script>
-
 </body>
 </html>
