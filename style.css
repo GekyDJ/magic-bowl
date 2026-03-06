@@ -9,9 +9,9 @@ html, body {
     width: 100vw;
     height: 100vh;
     background-color: #121212;
-    overflow: hidden; /* Niente barre di scorrimento */
-    touch-action: none; /* IMPEDISCE PINCH, ZOOM E PAN SU MOBILE */
-    user-select: none; /* Impedisce di selezionare elementi per sbaglio */
+    overflow: hidden; /* Blocca scorrimento */
+    touch-action: none; /* Impedisce pizzichi, zoom e spostamenti */
+    user-select: none;
     -webkit-user-select: none;
 }
 
@@ -22,7 +22,7 @@ section {
     align-items: center;
     width: 100%;
     height: 100%;
-    animation: animateColor 8s linear infinite;
+    animation: animateColor 10s linear infinite;
 }
 
 @keyframes animateColor {
@@ -30,63 +30,55 @@ section {
     100% { filter: hue-rotate(360deg); }
 }
 
-/* --- IL WRAPPER PER SCALARE SU MOBILE --- */
+/* --- IL WRAPPER (Dimensioni fisse per posizionare l'ombra e scalare) --- */
 .bowl-wrapper {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 300px;
+    height: 300px;
 }
 
 /* --- L'OMBRA SUL PAVIMENTO --- */
 .shadow {
     position: absolute;
-    top: calc(50% + 150px); /* Posizionata esattamente alla base della ciotola */
+    bottom: -25px; /* Perfettamente sotto la ciotola */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 260px;
     height: 40px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     filter: blur(6px);
+    z-index: -1;
 }
 
-/* --- LA CIOTOLA (Vetro e oscillazione) --- */
+/* --- LA CIOTOLA (Vetro e oscillazione 10s) --- */
 .bowl {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     border: 8px solid transparent;
+    box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.2);
     transform-origin: bottom center;
-    animation: animateBowl 5s linear infinite;
+    animation: animateBowl 10s linear infinite;
 }
 
-/* Il buco rialzato (Il bordo superiore del vetro) */
+/* Il buco rialzato (Elegante e proporzionato) */
 .bowl::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    height: 30px;
-    border: 15px solid #444; /* Colore del bordo del vetro */
+    height: 20px;
+    border: 8px solid #444;
     border-radius: 50%;
-    box-shadow: 0 10px #222; /* Profondità del buco */
-    z-index: 15;
+    box-shadow: 0 10px #222;
 }
 
-@keyframes animateBowl {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-15deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* --- IL LIQUIDO (Perfettamente dentro la ciotola) --- */
+/* --- IL LIQUIDO (Glow e sloshing) --- */
 .liquid {
     position: absolute;
     top: 50%;
@@ -96,16 +88,17 @@ section {
     background: #41c1fb;
     border-bottom-left-radius: 150px;
     border-bottom-right-radius: 150px;
-    filter: drop-shadow(0 0 80px #41c1fb); /* Il glow del liquido */
+    filter: drop-shadow(0 0 80px #41c1fb); /* Glow restituito! */
     transform-origin: top center;
-    animation: animateLiquid 5s linear infinite;
+    animation: animateLiquid 10s linear infinite;
 }
 
-/* La superficie del liquido (Effetto 3D) */
+/* Superficie del liquido */
 .liquid::before {
     content: '';
     position: absolute;
     top: -10px;
+    left: 0;
     width: 100%;
     height: 20px;
     background: #1fa4e0;
@@ -113,45 +106,52 @@ section {
     filter: drop-shadow(0 0 80px #41c1fb);
 }
 
-@keyframes animateLiquid {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-15deg); } /* Compensa l'inclinazione della ciotola */
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(15deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* --- LE BOLLICINE (Salgono dal pelo dell'acqua nel vuoto) --- */
+/* --- LE BOLLICINE --- */
 .bubbles-container {
     position: absolute;
     top: 0;
-    left: 5px;
-    right: 5px;
-    height: 50%; /* Occupa solo la metà superiore della ciotola */
-    border-top-left-radius: 150px;
-    border-top-right-radius: 150px;
-    overflow: hidden; /* Nasconde le bolle se escono dal vetro alto */
-    z-index: 10;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Esattamente la metà vuota della ciotola */
+    pointer-events: none;
 }
 
 .bubble {
     position: absolute;
-    bottom: -10px; /* Partono dal pelo dell'acqua */
-    background: rgba(255, 255, 255, 0.5);
+    bottom: 0; /* Partono dal pelo dell'acqua */
+    background: #41c1fb; /* Stesso colore del liquido per seguire l'hue-rotate! */
     border-radius: 50%;
+    opacity: 0;
     animation: riseSurface linear forwards;
 }
 
 @keyframes riseSurface {
     0% { transform: translateY(0); opacity: 0; }
-    10% { opacity: 1; } /* Compaiono subito dal liquido */
-    70% { opacity: 1; }
-    100% { transform: translateY(-120px); opacity: 0; } /* Svaniscono prima di uscire */
+    10% { opacity: 0.8; }
+    70% { opacity: 0.8; }
+    100% { transform: translateY(-100px); opacity: 0; } /* Si dissolvono a mezz'aria */
 }
 
-/* --- RESPONSIVE DESIGN PER MOBILE --- */
+/* --- INERZIA E SLOSHING --- */
+@keyframes animateBowl {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes animateLiquid {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-20deg); } /* Differenza di 5 gradi crea lo slosh */
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* --- SCALATURA MOBILE (Niente tagli laterali) --- */
 @media (max-width: 600px) {
     .bowl-wrapper {
-        transform: scale(0.65); /* Rimpicciolisce tutto per non tagliare i lati */
+        transform: scale(0.65); /* Rimpicciolisce lasciando margine sicuro */
     }
 }
