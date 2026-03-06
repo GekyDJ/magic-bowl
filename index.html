@@ -2,27 +2,24 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tag potenziato per impedire assolutamente lo zoom e il pinch -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <!-- Blocco totale di zoom e pinch -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#121212">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Magic Bowl</title>
+    <title>Glowing Liquid Bowl</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Section applica il cambio di colore (Hue Rotate) a tutta la scena -->
+    <!-- Section gestisce il cambio colore (hue-rotate) per tutta la scena -->
     <section>
-        <!-- Wrapper per ridurre le dimensioni solo su mobile -->
+        <!-- Wrapper usato per mantenere le proporzioni su mobile -->
         <div class="bowl-wrapper">
             <div class="shadow"></div>
             
             <div class="bowl">
-                <!-- Contenitore per le bolle nella metà SUPERIORE della ciotola -->
-                <div class="bubbles-container"></div>
-                
-                <!-- Il liquido nella metà INFERIORE della ciotola -->
                 <div class="liquid"></div>
+                <!-- Il contenitore delle bolle sta nella metà superiore -->
+                <div class="bubbles-container"></div>
             </div>
         </div>
     </section>
@@ -34,26 +31,22 @@
             const bubble = document.createElement('div');
             bubble.classList.add('bubble'); 
 
-            // Dimensioni casuali
+            // Dimensioni e posizioni casuali
             const size = Math.random() * 8 + 4;
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 70 + 15}%`; // Centrate
 
-            // Posizione orizzontale (teniamo le bolle un po' più verso il centro)
-            bubble.style.left = `${Math.random() * 70 + 15}%`;
-
-            // Velocità di salita casuale
-            bubble.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            // Velocità di salita
+            bubble.style.animationDuration = `${Math.random() * 2 + 3}s`;
 
             bubblesContainer.appendChild(bubble);
 
-            // Rimuove la bolla dopo 4 secondi
             setTimeout(() => {
                 bubble.remove();
-            }, 4000);
+            }, 5000);
         }
 
-        // Genera bolle di continuo
         setInterval(createBubble, 300);
     </script>
 
